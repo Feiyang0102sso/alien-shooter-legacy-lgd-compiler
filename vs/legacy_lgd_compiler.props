@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  各编译目标（as1 / as2 / ...）共用的工程设置。
+
+  必须编译 32 位（Win32）：变体 A 的符号记录是把内存里的 20 字节结构体原样写出，
+  其中含有一个 STRING 指针，只有 32 位下布局才和零售版一致（vendor 代码里有 static_assert 把关）。
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <PropertyGroup>
+    <!-- 仓库根目录：本文件位于 vs\，根目录是它的上一级 -->
+    <LegacyLgdRoot>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</LegacyLgdRoot>
+    <LegacyLgdCommonDir>$(LegacyLgdRoot)src\legacy_lgd_compiler\common\</LegacyLgdCommonDir>
+    <!-- 产物：bin\Win32\Release\ 等；中间文件：obj\Win32\Release\<工程名>\ 等 -->
+    <OutDir>$(LegacyLgdRoot)bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(LegacyLgdRoot)obj\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>false</SDLCheck>
+      <!-- vendor 是按 VC6 时代写法还原的代码，需要宽松一致性模式 -->
+      <ConformanceMode>false</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <PreprocessorDefinitions>WIN32;_CONSOLE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(LegacyLgdCommonDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <!-- 源码默认按 UTF-8 编译；个别 cp1251 文件在各自工程里单独覆盖 -->
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!-- Release：不做增量链接、不生成调试信息，输出目录里只留 exe 和 bat -->
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <!--
+    把通用启动脚本复制到 exe 旁边，并改成与 exe 同名（双击即可编译 .\maps）。
+    用独立 Target 而不是 PostBuildEvent：exe 不需要重新链接时 PostBuildEvent 会被跳过，
+    这里每次构建都会检查，launcher.bat 有变化就复制。
+  -->
+  <Target Name="CopyLegacyLgdLauncher" AfterTargets="Build">
+    <Copy SourceFiles="$(LegacyLgdRoot)scripts\launcher.bat"
+          DestinationFiles="$(OutDir)$(TargetName).bat"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

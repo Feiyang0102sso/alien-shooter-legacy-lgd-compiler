@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解决方案资源管理器里的分组（只放代码）：common = 各目标共用，vendor = 原版编译器代码，其余为本目标自己的代码 -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{13FC0C88-B922-4051-BFBC-F7C65FC54F3A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{2246EBE5-C0B0-4579-B9A7-C1C9E1C2566E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\legacy_lgd_compiler\common\cli_frontend.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\main.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\lgd_writer.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\stubs.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\SCRIPT.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\MYLIB.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\MYERROR.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\STREAM.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\legacy_lgd_compiler\common\cli_frontend.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\lgd_writer.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\script.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\script_exec_dispatch.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\mylib.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\myerror.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\basetype.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\list.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\stream.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

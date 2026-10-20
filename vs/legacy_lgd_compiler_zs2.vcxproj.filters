@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解决方案资源管理器里的分组（只放代码）：common = 各目标共用，vendor = 原版编译器代码，其余为本目标自己的代码 -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{1AB0BB02-6F51-40E4-9316-6B6E1AFA62D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{24554835-FAB6-4990-8884-6AD60C79A7FC}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\legacy_lgd_compiler\common\cli_frontend.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\main.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\lgd_writer.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\stubs.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\vendor\SCRIPT.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\vendor\MYLIB.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\vendor\MYERROR.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\zs2\vendor\STREAM.CPP">
+      <Filter>vendor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\legacy_lgd_compiler\common\cli_frontend.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\lgd_writer.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\script.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\script_exec_dispatch.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\mylib.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\myerror.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\basetype.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\list.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\zs2\vendor\stream.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

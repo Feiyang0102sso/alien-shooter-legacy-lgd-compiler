@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- as2_addon：Alien Shooter 2 资料片一代（AS2C / AS2R）。编译器与写盘均来自 AS2 资料片编辑器（SCRIPT），输出变体 B。 -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{1AE97EDE-7123-4284-A08A-371D7B316502}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>legacy_lgd_compiler_as2_addon</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="legacy_lgd_compiler.props" />
+  </ImportGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(LegacyLgdRoot)src\legacy_lgd_compiler\as2_addon;$(LegacyLgdRoot)src\legacy_lgd_compiler\as2_addon\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="..\src\legacy_lgd_compiler\common\cli_frontend.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\main.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\lgd_writer.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\stubs.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\SCRIPT.CPP" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\MYLIB.CPP" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\MYERROR.CPP" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as2_addon\vendor\STREAM.CPP" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\legacy_lgd_compiler\common\cli_frontend.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\lgd_writer.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\script.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\script_exec_dispatch.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\mylib.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\myerror.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\basetype.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\list.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as2_addon\vendor\stream.h" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

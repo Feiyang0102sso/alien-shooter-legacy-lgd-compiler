@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- as1：AS1 / ZS1 / Theseus 一代。编译器来自 AS1 地图编辑器（LOGIC）。 -->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{69E7C2BB-143C-4697-AC9D-75CB8F4C2F21}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>legacy_lgd_compiler_as1</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="legacy_lgd_compiler.props" />
+  </ImportGroup>
+
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <!-- as1\ 放精简版 runtime.h（替代原工程的总头文件 runtime.hpp，原版没有复制过来），vendor\ 放原版编译器代码 -->
+      <AdditionalIncludeDirectories>$(LegacyLgdRoot)src\legacy_lgd_compiler\as1;$(LegacyLgdRoot)src\legacy_lgd_compiler\as1\vendor;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <!-- vendor 代码自行声明 sprintf / vsprintf / sscanf；新版 UCRT 只在头文件里内联提供，需要这个库补上导出符号 -->
+      <AdditionalDependencies>legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <ClCompile Include="..\src\legacy_lgd_compiler\common\cli_frontend.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\main.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\stubs.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\lgd_writer.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\logic.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\logic_parser.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\string.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\string_resource_ini_excerpt.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\legacy_lgd_compiler\common\cli_frontend.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\stubs.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\lgd_writer.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\runtime.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\legacy_compiler.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\runtime_foundation.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\win32_abi.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\mystring.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\containers.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\stream.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\myerror.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\globals.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\logic.h" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

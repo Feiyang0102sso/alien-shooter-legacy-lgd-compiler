@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 解决方案资源管理器里的分组（只放代码）：common = 各目标共用，vendor = 原版编译器代码，其余为本目标自己的代码 -->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{114BEC63-4218-4B55-9CDF-0EB97E4D6482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{BD82DEF4-742A-426E-A958-84DD2EA7056C}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\legacy_lgd_compiler\common\cli_frontend.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\main.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\stubs.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\lgd_writer.cpp" />
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\logic.cpp">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\logic_parser.cpp">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\string.cpp">
+      <Filter>vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\legacy_lgd_compiler\as1\vendor\string_resource_ini_excerpt.cpp">
+      <Filter>vendor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\legacy_lgd_compiler\common\cli_frontend.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\stubs.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\lgd_writer.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\runtime.h" />
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\legacy_compiler.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\runtime_foundation.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\win32_abi.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\mystring.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\containers.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\stream.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\myerror.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\globals.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\legacy_lgd_compiler\as1\vendor\logic.h">
+      <Filter>vendor</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
