@@ -1,5 +1,5 @@
 // legacy_lgd_compiler_as1：用 AS1 地图编辑器的原版编译器（LOGIC），把 .lgc 编译成 Legacy LGD（变体 A）。
-// 目标引擎：AS1 / ZS1 / Theseus 一代。
+// 目标引擎：AS1 / Theseus 一代。ZS1 不在内：它的脚本用了函数前置声明，这个编译器不支持。
 //
 // 命令行参数由 common/cli_frontend 统一处理，与官方 lgc_compiler.exe 一致。
 //

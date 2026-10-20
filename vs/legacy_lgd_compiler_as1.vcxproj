@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- as1：AS1 / ZS1 / Theseus 一代。编译器来自 AS1 地图编辑器（LOGIC）。 -->
+<!-- as1：AS1 / Theseus 一代（ZS1 的脚本用了函数前置声明，编译不了）。编译器来自 AS1 地图编辑器（LOGIC）。 -->
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <ItemGroup Label="ProjectConfigurations">

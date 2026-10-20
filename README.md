@@ -17,6 +17,8 @@ This repository provides compilers for four variants: **AS1 / AS2 / AS2-Addon / 
 > [!WARNING]
 >
 > Only the **AS1** version is recommended. The AS2-generation engines (AS2 / AS2-Addon / ZS2) have a loader bug: after reading an lgd they never rebuild the symbol hashes, so not even `main` can be found and the script never runs.
+>
+> ZS1 is not supported either: its scripts use function forward declarations, which the AS1 compiler rejects.
 
 ### Documentation
 
@@ -44,6 +46,8 @@ See [docs/legacy_lgd_doc_EN.md](docs/legacy_lgd_doc_EN.md) for the file format.
 > [!WARNING]
 >
 > 仅建议使用 **AS1** 版本。AS2 一代的引擎（AS2 / AS2-Addon / ZS2）加载器有缺陷：读入 lgd 后不会重建符号哈希，连 `main` 都找不到，脚本根本不会运行。
+>
+> ZS1 也不支持：它的脚本用了函数前置声明，AS1 编译器编不过。
 
 ### 文档
 

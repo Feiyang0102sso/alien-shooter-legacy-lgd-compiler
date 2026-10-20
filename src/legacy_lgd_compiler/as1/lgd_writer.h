@@ -1,5 +1,5 @@
 #pragma once
-// as1（AS1 / ZS1 / Theseus）的 Legacy LGD（变体 A）写盘与回读校验。
+// as1（AS1 / Theseus）的 Legacy LGD（变体 A）写盘与回读校验。
 //
 // LOGIC 的栈、符号表、字节码都是 private 成员，外部函数访问不到，
 // 所以写盘与比较分别由 vendor 头文件里新增的两个成员 LOGIC::SaveAs / LOGIC::SameAs 完成，

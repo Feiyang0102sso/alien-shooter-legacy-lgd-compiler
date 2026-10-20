@@ -34,7 +34,9 @@ Legacy LGD simply writes these three out in order. Loading reads them straight b
 >
 > Among the samples we have, the only official release that ships Legacy LGD is the **Russian version of Crazy Launch**. Why they did this is still unknown. Every other PC release ships plain-text `.lgc`.
 >
-> Its format is the same as the AS1 / ZS1 engine, and this document focuses on that version.
+> Its format is the same as the AS1 engine, and this document focuses on that version.
+>
+> The ZS1 engine reads and writes the same format, but its compiler is an upgraded one: it supports function forward declarations (`Foo();`) and adds the `ActionN` / `ScriptEventN` mapping tables. So ZS1 scripts fail to compile with the AS1 compiler; even if they did, the lgd does not store those two tables, so map triggers and `ScriptEventN` callbacks would be disconnected after loading.
 >
 > The format also varies slightly between engines; if time permits, that will be covered later.
 

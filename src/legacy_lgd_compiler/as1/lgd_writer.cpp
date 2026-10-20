@@ -1,4 +1,4 @@
-// as1（AS1 / ZS1 / Theseus）的 Legacy LGD（变体 A）写盘与回读校验。
+// as1（AS1 / Theseus）的 Legacy LGD（变体 A）写盘与回读校验。
 //
 // 包含两部分：
 //   1. LOGIC::SaveAs：原版 LOGIC::Save() 的“指定输出路径”版本。
